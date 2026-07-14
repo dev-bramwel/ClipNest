@@ -1,6 +1,11 @@
 # ClipNest
+
 A Go web app that lets users upload a video, compress it, resize it for Reels/Shorts/WhatsApp Status, generate a thumbnail, and download the processed version.
+
+Core application structs live in `internal/domain` so handlers, services, repositories, storage, and processors share one vocabulary.
+
 ## Project structure
+
 ```text
 clipnest/
 ├── cmd/
@@ -20,22 +25,20 @@ clipnest/
 │   │
 │   ├── handlers/
 │   │   ├── health_handler.go
-│   │   ├── upload_handler.go
-│   │   └── media_handler.go
+│   │   ├── media_handler.go
+│   │   └── upload_handler.go
 │   │
 │   ├── services/
-│   │   ├── upload_service.go
+│   │   ├── job_service.go
 │   │   ├── media_service.go
-│   │   └── job_service.go
+│   │   └── upload_service.go
 │   │
 │   ├── repositories/
 │   │   ├── media_repository.go
 │   │   └── user_repository.go
 │   │
-│   ├── models/
-│   │   ├── media.go
-│   │   ├── user.go
-│   │   └── job.go
+│   ├── domain/
+│   │   └── domain.go
 │   │
 │   ├── storage/
 │   │   ├── local_storage.go
