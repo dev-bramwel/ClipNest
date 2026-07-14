@@ -3,7 +3,7 @@ package app
 type App struct {
 	Config *config.Config
 	Router http.Handler
-	DB *sql.DB
+	DB     *sql.DB
 }
 
 func New(cfg *config.Config) (*App, error) {

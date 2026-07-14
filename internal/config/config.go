@@ -1,10 +1,10 @@
 package config
 
 type Config struct {
-	Port           string
-	UploadDir      string
-	ProcessedDir   string
+	Port            string
+	UploadDir       string
+	ProcessedDir    string
 	MaxUploadSizeMB int
-	DatabaseURL    string
+	DatabaseURL     string
 	FFmpegPath      string
 }
