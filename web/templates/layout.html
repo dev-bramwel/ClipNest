@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClipNest</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark">CN</div>
+          <div>
+            <h1>ClipNest</h1>
+            <p class="site-tag">Upload, compress, and share short videos.</p>
+          </div>
+        </div>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="#upload">Upload</a>
+          <a href="#how-it-works">How it works</a>
+        </nav>
+      </header>
+
+      <main class="content">
+        {{template "content" .}}
+      </main>
+
+      <footer class="site-footer">
+        <span>ClipNest • Simple video processing for creators</span>
+        <span class="footer-right">Server status: <strong id="health-status">unknown</strong></span>
+      </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
