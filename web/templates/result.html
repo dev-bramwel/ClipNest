@@ -1,9 +1,24 @@
 {{define "content"}}
   <section class="section-card">
-    <h2>Result</h2>
-    <p>Processed video details and download links appear here once processing is complete.</p>
-    <div class="placeholder-card">
-      <span>Result page placeholder</span>
+    <div class="result-shell">
+      <span class="status-badge">Processing complete</span>
+      <h2>Your optimized clip is ready</h2>
+      <p>Preview your final export here, along with the key details that matter for sharing.</p>
+
+      <div class="result-meta">
+        <span class="result-pill">Duration: 00:32</span>
+        <span class="result-pill">Format: MP4</span>
+        <span class="result-pill">Size: 4.8MB</span>
+      </div>
+
+      <div class="placeholder-card">
+        <p>Preview area placeholder for the rendered video thumbnail and playback controls.</p>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 16px;">
+        <a class="button button-primary" href="/">Download clip</a>
+        <a class="button button-secondary" href="/upload">Process another</a>
+      </div>
     </div>
   </section>
 {{end}}

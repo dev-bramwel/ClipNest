@@ -1,35 +1,54 @@
 {{define "content"}}
   <section class="hero">
     <div>
-      <h2>Welcome to ClipNest</h2>
-      <p>Fast, easy video upload and compression for shorts, reels, and social sharing.</p>
+      <h2>Make every clip feel polished.</h2>
+      <p>ClipNest helps creators upload, trim, and compress short-form video with a calm, focused workflow designed for modern socials.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href="#upload">Start Upload</a>
+        <a class="button button-primary" href="/upload">Start Upload</a>
         <button class="button button-secondary" id="health-check">Check Health</button>
       </div>
     </div>
     <div class="hero-card">
       <div class="status-card">
-        <h3>Server Health</h3>
-        <p>Use the health check to verify the backend is running.</p>
+        <span class="status-badge">Live and ready</span>
+        <h3>Built for fast handoffs</h3>
+        <p>Use the health check to confirm the backend is responding before you start processing your next cut.</p>
+        <div class="small-meta">
+          <span>Fast processing</span>
+          <span>Clean results</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="upload" class="section-card">
-    <h3>Upload a video</h3>
-    <p>Drag and drop your media or choose a file to begin. This feature is coming soon, but the UI is ready.</p>
-    <div class="placeholder-card">
-      <span>Upload form placeholder</span>
-    </div>
-  </section>
+  <section class="section-grid">
+    <article class="section-card">
+      <h3>Upload quickly</h3>
+      <p>Drop in a file, choose a preset, and begin your workflow without friction.</p>
+      <ul class="feature-list">
+        <li>Simple drag-and-drop experience</li>
+        <li>Clear compression presets</li>
+        <li>Clean output packaging</li>
+      </ul>
+    </article>
 
-  <section id="how-it-works" class="section-card">
-    <h3>How it works</h3>
-    <ol>
-      <li>Upload your footage.</li>
-      <li>Choose compression settings.</li>
-      <li>Download the optimized clip.</li>
-    </ol>
+    <article class="section-card">
+      <h3>Stay in control</h3>
+      <p>Every step is intentionally minimal, so the focus stays on the content.</p>
+      <ul class="feature-list">
+        <li>Readable progress states</li>
+        <li>Short, focused actions</li>
+        <li>Friendly visual feedback</li>
+      </ul>
+    </article>
+
+    <article class="section-card">
+      <h3>How it works</h3>
+      <ol class="step-list">
+        <li>Upload your footage.</li>
+        <li>Choose your compression settings.</li>
+        <li>Download the optimized clip.</li>
+      </ol>
+    </article>
   </section>
 {{end}}

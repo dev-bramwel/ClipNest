@@ -44,7 +44,7 @@ func TestRouterServesIndexTemplate(t *testing.T) {
 	if bodyText == "" {
 		t.Fatalf("expected rendered HTML body")
 	}
-	if !strings.Contains(bodyText, "Welcome to ClipNest") {
+	if !strings.Contains(bodyText, "Make every clip feel polished.") {
 		t.Fatalf("expected rendered home page content, got %q", bodyText)
 	}
 }
