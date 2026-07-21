@@ -72,3 +72,28 @@ Clean up the initial ClipNest scaffold and introduce a single domain module for 
 - Add video validation, safe file naming, and local storage.
 - Integrate FFmpeg for compression, resizing presets, and thumbnail generation.
 - Add the result page and processed video download endpoint.
+
+## Day 2 - Upload Flow and Processing UI
+
+**Date:** 2026-07-21
+**Author:** dev-bramwel
+**Branch:** feat/datastructure
+
+### Goal
+Turn the initial scaffold into a working MVP flow for receiving uploads, validating them, storing them locally, and presenting a result page for processed media.
+
+### Implementation
+- Added upload, result, download, and thumbnail handlers in the web layer and wired them through the main router.
+- Implemented the upload service with multipart form parsing, file size validation, safe filename sanitization, local storage under `uploads/`, and processed output generation under `processed/`.
+- Added FFmpeg-backed processing support for compression presets, output naming, and thumbnail creation.
+- Introduced in-memory media and job tracking so the app can follow each upload through queued, running, ready, and failed states.
+- Expanded the templates and frontend assets to support the upload form, processing feedback, and result page links.
+
+### Verification
+- Ran `go test ./...` successfully.
+- Reviewed the router and handler wiring for the new upload and result flow.
+
+### Next Steps
+- Persist media and job data beyond the current in-memory store.
+- Move processing work out of the request path into a background job queue.
+- Add end-to-end tests for the upload and result experience.
