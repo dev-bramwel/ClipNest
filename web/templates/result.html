@@ -1,9 +1,40 @@
 {{define "content"}}
   <section class="section-card">
-    <h2>Result</h2>
-    <p>Processed video details and download links appear here once processing is complete.</p>
-    <div class="placeholder-card">
-      <span>Result page placeholder</span>
+    <div class="result-shell">
+      {{if .ErrorMessage}}
+        <span class="status-badge">Processing failed</span>
+        <h2>We could not finish this media.</h2>
+        <p>{{.ErrorMessage}}</p>
+      {{else}}
+        <span class="status-badge">{{.StatusText}}</span>
+        <h2>Your optimized clip is ready</h2>
+        <p>Preview the generated thumbnail and download the processed video below.</p>
+      {{end}}
+
+      {{if .Media.ID}}
+        <div class="result-meta">
+          <span class="result-pill">Filename: {{.Media.OriginalName}}</span>
+          <span class="result-pill">Preset: {{.PresetLabel}}</span>
+          <span class="result-pill">Size: {{.FileSizeText}}</span>
+        </div>
+      {{end}}
+
+      {{if .ThumbnailURL}}
+        <div class="placeholder-card" style="padding: 0; overflow: hidden;">
+          <img src="{{.ThumbnailURL}}" alt="Generated thumbnail" style="display: block; width: 100%; max-height: 360px; object-fit: cover;" />
+        </div>
+      {{else}}
+        <div class="placeholder-card">
+          <p>No thumbnail is available yet for this media.</p>
+        </div>
+      {{end}}
+
+      <div class="hero-actions" style="margin-top: 16px;">
+        {{if .DownloadURL}}
+          <a class="button button-primary" href="{{.DownloadURL}}">Download processed video</a>
+        {{end}}
+        <a class="button button-secondary" href="/upload">Process another</a>
+      </div>
     </div>
   </section>
 {{end}}

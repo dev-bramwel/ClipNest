@@ -20,7 +20,7 @@ func Load() (*Config, error) {
 	}
 
 	return &Config{
-		Host:        getEnv(envMap, "HOST", "127.0.0.1"),
+		Host:        getEnv(envMap, "HOST", "0.0.0.0"),
 		Port:        getEnv(envMap, "PORT", "8080"),
 		StaticDir:   getEnv(envMap, "STATIC_DIR", "web/static"),
 		TemplateDir: getEnv(envMap, "TEMPLATE_DIR", "web/templates"),

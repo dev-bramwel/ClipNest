@@ -1,9 +1,59 @@
 {{define "content"}}
   <section class="section-card">
-    <h2>Upload</h2>
-    <p>The upload page will let users submit new video files and begin processing.</p>
-    <div class="placeholder-card">
-      <span>Upload page placeholder</span>
+    <div class="upload-zone">
+      <span class="status-badge">Ready to process</span>
+      <h2>Upload your video</h2>
+      <p>Select a file to begin a streamlined compression workflow tailored for short-form content.</p>
+
+      {{if .ErrorMessage}}
+        <div class="alert alert-error">{{.ErrorMessage}}</div>
+      {{end}}
+
+      {{if .SuccessMessage}}
+        <div class="alert alert-success">{{.SuccessMessage}}</div>
+        {{if .ResultURL}}
+          <a class="button button-secondary" href="{{.ResultURL}}">View result</a>
+        {{end}}
+      {{end}}
+
+      <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <div class="field-group">
+          <label for="video">Choose a video file</label>
+          <input id="video" name="video" type="file" accept="video/mp4,video/quicktime,video/webm" required />
+        </div>
+
+        <div class="field-group">
+          <label for="preset">Preset</label>
+          <select id="preset" name="preset">
+            <option value="reels" {{if eq .Preset "reels"}}selected{{end}}>Reels</option>
+            <option value="shorts" {{if eq .Preset "shorts"}}selected{{end}}>Shorts</option>
+            <option value="whatsapp-status" {{if eq .Preset "whatsapp-status"}}selected{{end}}>WhatsApp Status</option>
+          </select>
+        </div>
+
+        <button class="button button-primary" type="submit">Upload and process</button>
+      </form>
+
+      <div class="small-meta">
+        <span>Accepted formats: mp4, mov, webm</span>
+        <span>Max size: 500MB</span>
+      </div>
+    </div>
+
+    <div class="section-grid" style="margin-top: 18px;">
+      <article class="section-card">
+        <h3>Recommended presets</h3>
+        <ul class="feature-list">
+          <li>Shorts-ready 1080p</li>
+          <li>Balanced quality and size</li>
+          <li>Fast export for socials</li>
+        </ul>
+      </article>
+
+      <article class="section-card">
+        <h3>What happens next</h3>
+        <p>Your file will be analyzed, optimized, and prepared for download once processing is complete.</p>
+      </article>
     </div>
   </section>
 {{end}}
