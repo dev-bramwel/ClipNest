@@ -45,6 +45,24 @@ func ResolvePreset(value string) (PresetConfig, error) {
 	}
 }
 
+func (p *Processor) GenerateThumbnail(inputPath, outputPath string) error {
+	if err := os.MkdirAll(filepath.Dir(outputPath), 0o755); err != nil {
+		return fmt.Errorf("could not create thumbnail directory: %w", err)
+	}
+	if _, err := exec.LookPath(p.FFMPEGPath); err != nil {
+		return fmt.Errorf("ffmpeg not available")
+	}
+
+	args := []string{"-y", "-i", inputPath, "-ss", "1", "-frames:v", "1", outputPath}
+	cmd := exec.Command(p.FFMPEGPath, args...)
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("thumbnail generation failed: %w: %s", err, strings.TrimSpace(stderr.String()))
+	}
+	return nil
+}
+
 func (p *Processor) Process(inputPath, outputPath string, preset PresetConfig) error {
 	if err := os.MkdirAll(filepath.Dir(outputPath), 0o755); err != nil {
 		return fmt.Errorf("could not create processed directory: %w", err)

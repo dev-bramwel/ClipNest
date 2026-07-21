@@ -11,6 +11,9 @@
 
       {{if .SuccessMessage}}
         <div class="alert alert-success">{{.SuccessMessage}}</div>
+        {{if .ResultURL}}
+          <a class="button button-secondary" href="{{.ResultURL}}">View result</a>
+        {{end}}
       {{end}}
 
       <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">

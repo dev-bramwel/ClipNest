@@ -53,6 +53,30 @@ func writeTestVideo(t *testing.T, dst io.Writer) error {
 	return nil
 }
 
+func TestGetMediaByIDReturnsCleanErrorForMissingMedia(t *testing.T) {
+	service := NewUploadService(t.TempDir())
+
+	_, err := service.GetMediaByID("missing")
+	if err == nil {
+		t.Fatal("expected missing media error")
+	}
+	if !strings.Contains(err.Error(), "not found") {
+		t.Fatalf("expected not found error, got %v", err)
+	}
+}
+
+func TestResolveDownloadPathRejectsTraversal(t *testing.T) {
+	service := NewUploadService(t.TempDir())
+
+	_, err := service.ResolveDownloadPath("../bad")
+	if err == nil {
+		t.Fatal("expected traversal error")
+	}
+	if !strings.Contains(err.Error(), "invalid") {
+		t.Fatalf("expected invalid path error, got %v", err)
+	}
+}
+
 func TestHandleUploadAcceptsValidVideoFile(t *testing.T) {
 	service := NewUploadService(t.TempDir())
 
